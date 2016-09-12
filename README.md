@@ -1,9 +1,10 @@
 Sii trial code front end project for Adolfo Ruiz Rivas
 
 To launch :
+##
 
-npm install
-grunt serve
+-npm install
+-grunt serve
 
 
 

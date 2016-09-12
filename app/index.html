@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Manager</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bs-header">
+      <div class="container">
+        <h1>Simple validator</h1>
+        <p>Simple validator application</p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 main-container">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="tpl-contacts">
+      <h2 class="page-header text-center">List of products</h2>
+     
+      <ul class=" contacts-container"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-contact">
+      <div class="thumbnail">
+        <img class="media-object">
+		<h3>
+             
+<%- customer %>
+        </h3>
+		<div>
+            <a href="#contacts/edit/<%- id %>"><span style="font-size:2.5em;" class="glyphicon glyphicon-check"></span></a>
+          </div>
+      </div>
+      <div >
+        
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Type :</dt>
+          <dd><%- type %></dd>
+          <dt>Value Date:</dt>
+          <dd><%- valueDate %></dd>
+         
+  </dl>
+ 
+      </div>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-new-contact">
+      <h2 class="page-header text-center"><%= isNew ? 'Validate' : 'Validate' %> Product</h2>
+       <div class="error"></div>
+          <dd></dd>
+  
+	  <form role="form" class="form-horizontal contract-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Customer :</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control customer-input" value="<%- customer %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Type:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control type-input" value="<%- type %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Value Date :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control valueDate-input" value="<%- valueDate %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Trade Date :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control tradeDate-input" value="<%- tradeDate %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Currency :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control ccyPair-input" value="<%- ccyPair %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Style :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control style-input" value="<%- style %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Expire date :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control expiryDate-input" value="<%- expiryDate %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Premium date :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control premiumDate-input" value="<%- premiumDate %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Delivery date :</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control deliveryDate-input" value="<%- deliveryDate %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline btn-lg btn-block">validate</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#contacts" class="btn btn-outline btn-lg btn-block">Return</a>
+          </div>
+        </div>
+      </form>
+    </script>
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/underscore/underscore.js"></script>
+    <script src="vendor/backbone/backbone.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/models/contact.js"></script>
+    <script src="js/collections/contacts.js"></script>
+    <script src="js/views/contact.js"></script>
+    <script src="js/views/contacts.js"></script>
+    <script src="js/views/contactForm.js"></script>
+    <script src="js/router.js"></script>
+
+    <script>
+      $(function() {
+        ContactManager.start({
+          contacts: [
+           {id: 1,
+"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"BUY","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"9/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 2,"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"10/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 3,"customer":"PLUTO2","ccyPair":"EURUSD","type":"Forward","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"8/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"2016/08/12","deliveryDate":"10/10/10"},
+           {id: 4,
+"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"BUY","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"9/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 5,"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"10/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 6,"customer":"PLUTO2","ccyPair":"EURUSD","type":"Forward","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"8/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"2016/08/12","deliveryDate":"10/10/10"},
+           {id: 7,
+"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"BUY","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"9/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 8,"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"10/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 9,"customer":"PLUTO2","ccyPair":"EURUSD","type":"Forward","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"8/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"2016/08/12","deliveryDate":"10/10/10"},
+{id: 10,
+"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"BUY","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"9/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 11,"customer":"PLUTO1","ccyPair":"EURUSD","type":"Spot","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"10/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"10/10/10","deliveryDate":"10/10/10"},
+
+{id: 12,"customer":"PLUTO2","ccyPair":"EURUSD","type":"Forward","direction":"SELL","tradeDate":"10/10/10","amount1":1000000.00,"amount2":1120000.00,"rate":1.12,"valueDate":"8/10/10","legalEntity":"CS Zurich","trader":"Johann Baumfiddler","style":"EUROPEAN","expiryDate":"10/10/10","premiumDate":"2016/08/12","deliveryDate":"10/10/10"}
+
+
+
+			]
+        });
+      });
+    </script>
+  </body>
+</html>

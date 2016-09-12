@@ -2,6 +2,8 @@ Sii trial code front end project for Adolfo Ruiz Rivas
 
 To launch :
 
+- bower install
+
 
 -npm install
 

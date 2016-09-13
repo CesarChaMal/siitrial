@@ -112,10 +112,6 @@ module.exports = function (grunt) {
         path: 'http://localhost:<%= connect.test.options.port %>'
       }
     },
-    clean: {
-      dist: ['.tmp', '<%= yeoman.dist %>/*'],
-      server: '.tmp'
-    },
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -136,30 +132,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    sass: {
-      options: {
-        sourceMap: true,
-        includePaths: ['app/bower_components']
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
-      }
-    },
+    
     requirejs: {
       dist: {
         // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
@@ -314,22 +287,12 @@ module.exports = function (grunt) {
 
     if (target === 'test') {
       return grunt.task.run([
-        'clean:server',
         'createDefaultTemplate',
-        'jst',
-        'sass:server',
-        'connect:test',
-        'open:test',
         'watch'
       ]);
     }
 
     grunt.task.run([
-      'clean:server',
-      'createDefaultTemplate',
-      'jst',
-      'sass:server',
-      'connect:livereload',
       'open:server',
       'watch'
     ]);
